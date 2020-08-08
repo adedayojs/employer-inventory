@@ -1,14 +1,12 @@
 <template>
-  <div class="sidebar d-flex flex-column bg-white mt-1 align-items-center">
-    <div>
-      <router-link to="##"><i class="fa fa-fw fa-home"></i></router-link>
-    </div>
-    <div>
-      <router-link to="/"><i class="fa fa-fw fa-home"></i></router-link>
-    </div>
-    <div>
-      <router-link to="#"><i class="fa fa-fw fa-home"></i></router-link>
-    </div>
+  <div class="sidebar d-none d-md-flex flex-column bg-white align-items-center">
+    <router-link to="##"><i class="fa fa-fw fa-home"></i></router-link>
+
+    <router-link to="/"><i class="fa fa-fw fa-home"></i></router-link>
+
+    <router-link to="#">
+      <i class="fa fa-fw fa-home"></i>
+    </router-link>
   </div>
 </template>
 
@@ -26,16 +24,14 @@ export default {};
   overflow-x: hidden;
   padding-top: 0.1em;
 
-  div {
-    padding: 1em;
-    a {
-      color: black;
-    }
-    .router-link-active {
-      color: #66db55;
-    }
+  a {
+    padding: 2em 1em;
+    color: black;
   }
-  div:hover {
+  .router-link-active {
+    color: #66db55;
+  }
+  a:hover {
     background: #f8f9fa;
   }
 }

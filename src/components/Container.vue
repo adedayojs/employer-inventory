@@ -103,26 +103,32 @@ export default {
       users: []
     };
   },
-  beforeMount() {
-    fetch("https://crudcrud.com/api/c4a797a82d754192a88f2864235dbb25/users")
-      .then(res => res.json())
-      .then(response => {
-        this.users = response;
-        console.log(response);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  created() {
+    this.fetchAllUsers();
   },
   methods: {
+    fetchAllUsers() {
+      fetch("https://crudcrud.com/api/c4a797a82d754192a88f2864235dbb25/users")
+        .then(res => res.json())
+        .then(response => {
+          this.users = response;
+        })
+        .catch(err => {
+          console.log(err);
+          this.$toast.error("Unable to fetch all users");
+        });
+    },
     deleteUser(id) {
       fetch(
         `https://crudcrud.com/api/c4a797a82d754192a88f2864235dbb25/users/${id}`,
         { method: "DELETE" }
       )
-        .then(res => res.json())
-        .then(response => {
-          console.log(response);
+        .then(res => {
+          console.log(res);
+        })
+        .then(() => {
+          this.$toast.success("User Successfully Removed");
+          this.fetchAllUsers();
         })
         .catch(error => {
           console.log(error);

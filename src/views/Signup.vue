@@ -103,7 +103,21 @@ export default {
     };
   },
   methods: {
+    validateInput() {
+      // Simple validation
+      return (
+        this.form.email &&
+        this.form.password &&
+        this.form.firstName &&
+        this.form.lastName
+      );
+    },
     createUser() {
+      //  Run Validation function
+      if (!this.validateInput()) {
+        this.$toast.warning("Please Fill form before proceeding");
+        return;
+      }
       fetch("https://crudcrud.com/api/c4a797a82d754192a88f2864235dbb25/users", {
         method: "POST",
         mode: "no-cors",

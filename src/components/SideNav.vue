@@ -1,15 +1,15 @@
 <template>
   <div class="sidebar d-none d-md-flex flex-column bg-white align-items-center">
     <router-link to="login">
-      <i class="fa fa-fw fa-th-large"></i>
+      <img src="@/assets/img/micon.svg" />
     </router-link>
 
     <router-link to="/">
-      <i class="fa fa-fw fa-home"></i>
+      <img src="@/assets/img/users.svg" />
     </router-link>
 
     <router-link to="signup">
-      <i class="fa fa-fw fa-card"></i>
+      <img src="@/assets/img/card.svg" />
     </router-link>
   </div>
 </template>

@@ -1,8 +1,8 @@
 <template>
   <div>
     <nav class="nav bg-white p-2 justify-content-between">
-      <div href="#" class="nav-item nav-link">
-        <span class="bold">Get</span>Change
+      <div href="#" class="nav-item ">
+        <img src="@/assets/img/getchange.png" alt="" class="src" />
       </div>
       <div class="mr-4">
         <img

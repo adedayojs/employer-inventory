@@ -6,7 +6,9 @@
       </div>
       <div class="col-md-4">
         <div class="add-new">
-          <button class="ml-auto btn btn-small px-5 color">Add New</button>
+          <router-link to="/signup">
+            <button class="ml-auto btn btn-small px-5 color">Add New</button>
+          </router-link>
         </div>
       </div>
     </div>
@@ -51,8 +53,13 @@
       </div>
 
       <div class="add-new m-1 ml-auto">
-        <span class="img-thumbnail">1</span> of 2 <span> </span>
-        <span> </span>
+        <span class="img-thumbnail px-2">1</span> of 2
+        <span>
+          <img src="@/assets/img/left-chevron.png" alt="" class="src mx-1" />
+        </span>
+        <span>
+          <img src="@/assets/img/right-chevron.png" alt="" class="src mx-1" />
+        </span>
       </div>
     </div>
 
@@ -60,7 +67,7 @@
       <div class="col-12">
         <div class="row mb-2">
           <h6 class="col-md-1 col-12">
-            <i class="fa fa-square" aria-hidden="true"></i>
+            <img src="@/assets/img/box.png" alt="" class="src" />
           </h6>
           <h6 class="col-md-2 col-12">FIRST NAME</h6>
           <h6 class="col-md-2 col-12">LAST NAME</h6>
@@ -75,7 +82,7 @@
           class="row py-2 bg-white mb-2"
         >
           <div class="col-md-1 col-12">
-            <i class="fa fa-square" aria-hidden="true"></i>
+            <img src="@/assets/img/box.png" alt="" class="src" />
           </div>
           <div class="col-md-2 col-12">{{ user.firstName }}</div>
           <div class="col-md-2 col-12">{{ user.lastName }}</div>
@@ -86,8 +93,13 @@
             v-on:click="deleteUser(user._id)"
             class="delete-user col-md-1 col-12"
           >
-            <i class="fa fa-fw fa-trash"></i>
+            <img src="@/assets/img/trash.png" alt="" class="src" />
           </div>
+        </div>
+
+        <div class="loader" v-if="loading">
+          <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+          Fetching Users
         </div>
       </div>
     </div>
@@ -100,7 +112,8 @@ export default {
   components: {},
   data() {
     return {
-      users: []
+      users: [],
+      loading: true
     };
   },
   created() {
@@ -112,10 +125,12 @@ export default {
         .then(res => res.json())
         .then(response => {
           this.users = response;
+          this.loading = false;
         })
         .catch(err => {
           console.log(err);
           this.$toast.error("Unable to fetch all users");
+          this.loading = false;
         });
     },
     deleteUser(id) {
@@ -160,5 +175,9 @@ export default {
 .delete-user:hover {
   cursor: pointer;
   background-color: #f6f8f8;
+}
+.loader {
+  font-size: 3em;
+  color: $green;
 }
 </style>

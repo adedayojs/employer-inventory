@@ -22,81 +22,76 @@
       </div>
     </div>
 
-    <div class="row justify-content-between m-4">
-      <div class="col-md-8">
-        <div class="row">
-          <div class="col" style="max-width:fit-content">
-            <select
-              class="p-1 role text-secondary border-3 border-secondary small"
-            >
-              <option value=""> Change Role</option>
-              <option>Admin</option>
-              <option>Staff</option>
-            </select>
-            <button class="btn btn-sm color ml-2">Change</button>
-          </div>
+    <div class="row  m-4">
+      <div class="col col-sm-12 m-1" style="max-width:fit-content">
+        <select class="p-1 role text-secondary border-3 border-secondary small">
+          <option value=""> Change Role</option>
+          <option>Admin</option>
+          <option>Staff</option>
+        </select>
+        <button class="btn btn-sm color ml-2">Change</button>
+      </div>
 
-          <div class="col-6">
-            <div class="input-group small">
-              <input
-                type="text"
-                class="form-control small"
-                placeholder="Enter staff name here"
-              />
-              <div class="input-group-append">
-                <button
-                  class="btn btn-sm btn-outline-secondary small"
-                  type="button"
-                >
-                  Search
-                </button>
-              </div>
-            </div>
+      <div class="col-sm-6 col-md-6 m-1">
+        <div class="input-group small">
+          <input
+            type="text"
+            class="form-control small"
+            placeholder="Enter staff name here"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-sm btn-outline-secondary border-left-0 bg-white small"
+              type="button"
+            >
+              <i class="fa fa-fw fa-search"></i>
+            </button>
           </div>
         </div>
       </div>
-      <div class="col-4">
-        <div class="add-new">
-          <span class="img-thumbnail">1</span> of 2 <span> </span>
-          <span> </span>
-        </div>
+
+      <div class="add-new m-1 ml-auto">
+        <span class="img-thumbnail">1</span> of 2 <span> </span>
+        <span> </span>
       </div>
     </div>
 
-    <div class="row justify-content-between m-4">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Ó</th>
-            <th scope="col">FIRST NAME</th>
-            <th scope="col">LAST NAME</th>
-            <th scope="col">EMAIL</th>
-            <th scope="col">PHONE</th>
-            <th scope="col">ROLE</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="table-row mb-2 bg-white">
-            <th scope="row">1</th>
-            <td>Adedunye</td>
-            <td>Adedayo</td>
-            <td>admin@test.demo</td>
-            <td>+234567890-334</td>
-            <td>Admin</td>
-            <td>del</td>
-          </tr>
-          <tr class="table-row mb-2 bg-white">
-            <th scope="row">1</th>
-            <td>Adedunye</td>
-            <td>Adedayo</td>
-            <td>admin@test.demo</td>
-            <td>+234567890-334</td>
-            <td>Admin</td>
-            <td>del</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="row m-4">
+      <div class="col-12">
+        <div class="row mb-2">
+          <h6 class="col-md-1 col-12">
+            <i class="fa fa-square" aria-hidden="true"></i>
+          </h6>
+          <h6 class="col-md-2 col-12">FIRST NAME</h6>
+          <h6 class="col-md-2 col-12">LAST NAME</h6>
+          <h6 class="col-md-2 col-12">EMAIL</h6>
+          <h6 class="col-md-2 col-12">PHONE</h6>
+          <h6 class="col-md-2 col-12">ROLE</h6>
+          <h6 class="col-md-1 col-12"></h6>
+        </div>
+        <div class="row py-2 bg-white mb-2">
+          <div class="col-md-1 col-12">
+            <i class="fa fa-square" aria-hidden="true"></i>
+          </div>
+          <div class="col-md-2 col-12">Adedayo</div>
+          <div class="col-md-2 col-12">Adedunye</div>
+          <div class="col-md-2 col-12">test@admin.demo</div>
+          <div class="col-md-2 col-12">+234567898765</div>
+          <div class="col-md-2 col-12">Admin</div>
+          <div class="col-md-1 col-12"><i class="fa fa-fw fa-trash"></i></div>
+        </div>
+        <div class="row py-2 bg-white mb-2">
+          <div class="col-md-1 col-12">
+            <i class="fa fa-square" aria-hidden="true"></i>
+          </div>
+          <div class="col-md-2 col-12">Adedayo</div>
+          <div class="col-md-2 col-12">Adedunye</div>
+          <div class="col-md-2 col-12">test@admin.demo</div>
+          <div class="col-md-2 col-12">+234567898765</div>
+          <div class="col-md-2 col-12">Admin</div>
+          <div class="col-md-1 col-12"><i class="fa fa-fw fa-trash"></i></div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -122,5 +117,9 @@ export default {
 .role {
   //
   color: inherit;
+}
+.form-control.small {
+  height: 2em;
+  line-height: 1.5em;
 }
 </style>

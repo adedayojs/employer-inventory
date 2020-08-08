@@ -1,11 +1,15 @@
 <template>
   <div class="sidebar d-none d-md-flex flex-column bg-white align-items-center">
-    <router-link to="##"><i class="fa fa-fw fa-home"></i></router-link>
+    <router-link to="login">
+      <i class="fa fa-fw fa-th-large"></i>
+    </router-link>
 
-    <router-link to="/"><i class="fa fa-fw fa-home"></i></router-link>
-
-    <router-link to="#">
+    <router-link to="/">
       <i class="fa fa-fw fa-home"></i>
+    </router-link>
+
+    <router-link to="signup">
+      <i class="fa fa-fw fa-card"></i>
     </router-link>
   </div>
 </template>
@@ -26,9 +30,9 @@ export default {};
 
   a {
     padding: 2em 1em;
-    color: black;
+    color: rgb(117, 105, 105);
   }
-  .router-link-active {
+  .router-link-exact-active {
     color: #66db55;
     border-left: solid 0.3em #66db55;
   }

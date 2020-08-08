@@ -1,17 +1,20 @@
 <template>
   <section class="">
     <TopNav />
-    <MainComponent />
+    <div class="d-flex mt-1">
+      <SideNavComponent />
+      <router-view />
+    </div>
   </section>
 </template>
 <script>
 import TopNav from "@/components/TopNav.vue";
-import MainComponent from "@/components/Main";
+import SideNavComponent from "@/components/SideNav";
 export default {
   name: "Home",
   components: {
     TopNav,
-    MainComponent
+    SideNavComponent
   }
 };
 </script>

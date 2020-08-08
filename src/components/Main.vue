@@ -1,19 +1,13 @@
 <template>
   <div class="d-flex mt-1">
-    <SideNavComponent />
-    <ContainerComponent />
+    <router-view />
   </div>
 </template>
 
 <script>
-import SideNavComponent from "@/components/SideNav";
-import ContainerComponent from "@/components/Container";
 export default {
   name: "Main",
-  components: {
-    SideNavComponent,
-    ContainerComponent
-  }
+  components: {}
 };
 </script>
 

@@ -26,6 +26,7 @@
               <div class="col-12 col-md-6 my-1">
                 <label for="" class="small">First Name</label>
                 <input
+                  v-model="form.firstName"
                   type="text"
                   class="form-control"
                   placeholder="First Name"
@@ -34,6 +35,7 @@
               <div class="col-12 col-md-6 my-1">
                 <label for="" class="small">Last Name</label>
                 <input
+                  v-model="form.lastName"
                   type="text"
                   class="form-control"
                   placeholder="Last Name"
@@ -41,11 +43,17 @@
               </div>
               <div class="col-12 my-1">
                 <label for="" class="small">Email</label>
-                <input type="text" class="form-control" placeholder="Email" />
+                <input
+                  v-model="form.email"
+                  type="text"
+                  class="form-control"
+                  placeholder="Email"
+                />
               </div>
               <div class="col-12 my-1">
                 <label for="" class="small">Password</label>
                 <input
+                  v-model="form.password"
                   type="text"
                   class="form-control"
                   placeholder="Password"
@@ -53,7 +61,10 @@
               </div>
 
               <div class="col-md-4 col-12 ml-auto mt-4">
-                <button class="ml-auto btn btn-sm small px-5 color">
+                <button
+                  v-on:click.prevent="createUser()"
+                  class="ml-auto btn btn-sm small px-5 color"
+                >
                   Continue
                 </button>
               </div>
@@ -76,7 +87,53 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      form: {
+        email: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+        role: ["admin", "staff", "user", "employee"][
+          Math.floor(Math.random() * 4)
+        ],
+        phone: `${Math.floor(Math.random() * 456787654677)}`
+      }
+    };
+  },
+  methods: {
+    createUser() {
+      fetch("https://crudcrud.com/api/c4a797a82d754192a88f2864235dbb25/users", {
+        method: "POST",
+        mode: "no-cors",
+        body: this.form,
+        credentials: "same-origin",
+        "Content-Type": "application/json"
+      })
+        .then(res => res.json())
+        .then(response => {
+          //  Show Successfull Toast
+          //  Route to Login Page if any exist
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+          alert("Sorry An error occured");
+        });
+    }
+  },
+  watch: {
+    form() {
+      //  Auto generate role since there is no field to select that.
+      const role = ["admin", "staff", "user", "employee"][
+        Math.floor(Math.random() * 4)
+      ];
+      console.log(role);
+      this.form.role = role;
+    }
+  }
+};
 </script>
 
 <style lang="scss">

@@ -2,7 +2,7 @@
   <div>
     <nav class="nav bg-white p-2 justify-content-between">
       <div href="#" class="nav-item ">
-        <img src="@/assets/img/getchange.png" alt="" class="src" />
+        <img src="@/assets/img/getchange.png" alt="" class="" />
       </div>
       <div class="mr-4">
         <img

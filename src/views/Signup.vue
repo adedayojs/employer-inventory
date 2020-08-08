@@ -22,42 +22,59 @@
             >
           </h6>
           <form class="my-5 p-5 bg-white" id="signup-form">
-            <div class="form-row">
-              <div class="col-12 col-md-6 my-1">
+            <div class="form-row justify-content-between">
+              <div class="col-12 input-div col-md-5 my-1">
                 <label for="" class="small">First Name</label>
-                <input
-                  v-model="form.firstName"
-                  type="text"
-                  class="form-control"
-                  placeholder="First Name"
-                />
+                <div class="d-flex">
+                  <input
+                    v-model="form.firstName"
+                    type="text"
+                    class="form-control"
+                    placeholder="First Name"
+                  />
+                  <img src="@/assets/img/user.svg" alt="" class="" />
+                </div>
               </div>
-              <div class="col-12 col-md-6 my-1">
+              <div class="col-12 input-div col-md-5 my-1">
                 <label for="" class="small">Last Name</label>
-                <input
-                  v-model="form.lastName"
-                  type="text"
-                  class="form-control"
-                  placeholder="Last Name"
-                />
+                <div class="d-flex">
+                  <input
+                    v-model="form.lastName"
+                    type="text"
+                    class="form-control"
+                    placeholder="Last Name"
+                  />
+                  <img src="@/assets/img/user.svg" alt="" class="" />
+                </div>
               </div>
-              <div class="col-12 my-1">
+              <div class="col-12 input-div my-1">
                 <label for="" class="small">Email</label>
-                <input
-                  v-model="form.email"
-                  type="text"
-                  class="form-control"
-                  placeholder="Email"
-                />
+                <div class="d-flex">
+                  <input
+                    v-model="form.email"
+                    type="text"
+                    class="form-control"
+                    placeholder="Email"
+                  />
+                  <img src="@/assets/img/email.svg" alt="" class="" />
+                </div>
               </div>
-              <div class="col-12 my-1">
+              <div class="col-12 input-div my-1">
                 <label for="" class="small">Password</label>
-                <input
-                  v-model="form.password"
-                  type="text"
-                  class="form-control"
-                  placeholder="Password"
-                />
+                <div class="d-flex">
+                  <input
+                    v-model="form.password"
+                    :type="showPassword ? 'text' : 'password'"
+                    class="form-control"
+                    placeholder="Password"
+                  />
+                  <img
+                    src="@/assets/img/eye.svg"
+                    alt=""
+                    v-on:click="tooglePasswordView()"
+                    class=""
+                  />
+                </div>
               </div>
 
               <div class="col-md-4 col-12 ml-auto mt-4">
@@ -99,10 +116,14 @@ export default {
           Math.floor(Math.random() * 4)
         ],
         phone: `${Math.floor(Math.random() * 456787654677)}`
-      }
+      },
+      showPassword: false
     };
   },
   methods: {
+    tooglePasswordView() {
+      this.showPassword = !this.showPassword;
+    },
     validateInput() {
       // Simple validation
       return (
@@ -118,22 +139,21 @@ export default {
         this.$toast.warning("Please Fill form before proceeding");
         return;
       }
-      fetch("https://crudcrud.com/api/c4a797a82d754192a88f2864235dbb25/users", {
-        method: "POST",
-        mode: "no-cors",
-        body: this.form,
-        credentials: "same-origin",
-        "Content-Type": "application/json"
-      })
-        .then(res => res.json())
+      this.$axios
+        .post("/api/users", this.form)
         .then(response => {
           //  Show Successfull Toast
+          this.$toast.success(
+            `User with name ${response.data.firstName} created`
+          );
+
           //  Route to Login Page if any exist
           console.log(response);
+          this.$router.push("login");
         })
-        .catch(error => {
-          console.log(error);
-          alert("Sorry An error occured");
+        .catch(err => {
+          console.log(err);
+          this.$toast.err(err.error);
         });
     }
   },
@@ -152,10 +172,18 @@ export default {
 
 <style lang="scss">
 @import "../assets/_variables.scss";
-
-.src {
-  height: 100vh;
+input {
+  border: none !important;
+  padding: 0em !important;
 }
+.input-div {
+  border-bottom: black solid 1px;
+}
+input:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
 .image {
   position: fixed;
   z-index: 199999;

@@ -6,9 +6,9 @@
       </div>
       <div class="col-md-4">
         <div class="add-new">
-          <router-link to="/signup">
+          <!-- <router-link to="/signup">
             <button class="ml-auto btn btn-small px-5 color">Add New</button>
-          </router-link>
+          </router-link> -->
         </div>
       </div>
     </div>
@@ -121,10 +121,11 @@ export default {
   },
   methods: {
     fetchAllUsers() {
-      fetch("https://crudcrud.com/api/c4a797a82d754192a88f2864235dbb25/users")
-        .then(res => res.json())
+      this.$axios
+        .get("/api/users")
         .then(response => {
-          this.users = response;
+          console.log(response);
+          this.users = response.data;
           this.loading = false;
         })
         .catch(err => {
@@ -134,10 +135,8 @@ export default {
         });
     },
     deleteUser(id) {
-      fetch(
-        `https://crudcrud.com/api/c4a797a82d754192a88f2864235dbb25/users/${id}`,
-        { method: "DELETE" }
-      )
+      this.$axios
+        .delete(`/api/users/${id}`)
         .then(res => {
           console.log(res);
         })

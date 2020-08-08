@@ -15,11 +15,13 @@
       <div class="col-12 col-md-7 bg-white d-flex flex-column ml-auto right">
         <div class="container signup">
           <h3>Create your free account</h3>
-          <small
-            >Already registered?
-            <router-link to="login">Sign in</router-link></small
-          >
-          <form class="my-5 p-5" id="signup-form">
+          <h6>
+            <small
+              >Already registered?
+              <router-link to="login">Sign in</router-link></small
+            >
+          </h6>
+          <form class="my-5 p-5 bg-white" id="signup-form">
             <div class="form-row">
               <div class="col-12 col-md-6 my-1">
                 <label for="" class="small">First Name</label>
@@ -50,21 +52,23 @@
                 />
               </div>
 
-              <div class="col-md-4 ml-auto mt-4">
-                <button class="ml-auto btn btn-small small px-5 color">
+              <div class="col-md-4 col-12 ml-auto mt-4">
+                <button class="ml-auto btn btn-sm small px-5 color">
                   Continue
                 </button>
               </div>
             </div>
           </form>
         </div>
-        <div class="row mt-auto justify-content-between">
-          <p class="col-8 small">
+        <div class="row mt-auto justify-content-between footer">
+          <p class="col-12 col-md-8 small">
             By signing up, you agree to our
             <router-link to="#">Terms</router-link> and
             <router-link to="#">Privacy Policy</router-link>
           </p>
-          <p class="col-4 small">@2019 Tinylabs. All rights reserved</p>
+          <p class="col-12 col-md-4 small">
+            @2019 Tinylabs. All rights reserved
+          </p>
         </div>
       </div>
     </div>
@@ -105,6 +109,22 @@ a {
 @media (max-width: 767.98px) {
   .signup {
     padding: 0.5em;
+  }
+}
+@media (max-width: 575.98px) {
+  h3,
+  h6 {
+    text-align: center;
+  }
+  .right {
+    background-color: #f6f8f8 !important;
+  }
+  #signup-form {
+    margin: 2em auto !important;
+    padding: 1em !important;
+  }
+  .footer {
+    text-align: center;
   }
 }
 </style>

@@ -1,5 +1,10 @@
 # employer-inventory
 
+
+## Live Demo
+See [DEMO](https://employer-inventory.herokuapp.com).
+
+
 ## Project setup
 ```
 yarn install

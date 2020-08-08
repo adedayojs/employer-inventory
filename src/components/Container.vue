@@ -69,27 +69,25 @@
           <h6 class="col-md-2 col-12">ROLE</h6>
           <h6 class="col-md-1 col-12"></h6>
         </div>
-        <div class="row py-2 bg-white mb-2">
+        <div
+          v-for="user of users"
+          :key="user._id"
+          class="row py-2 bg-white mb-2"
+        >
           <div class="col-md-1 col-12">
             <i class="fa fa-square" aria-hidden="true"></i>
           </div>
-          <div class="col-md-2 col-12">Adedayo</div>
-          <div class="col-md-2 col-12">Adedunye</div>
-          <div class="col-md-2 col-12">test@admin.demo</div>
-          <div class="col-md-2 col-12">+234567898765</div>
-          <div class="col-md-2 col-12">Admin</div>
-          <div class="col-md-1 col-12"><i class="fa fa-fw fa-trash"></i></div>
-        </div>
-        <div class="row py-2 bg-white mb-2">
-          <div class="col-md-1 col-12">
-            <i class="fa fa-square" aria-hidden="true"></i>
+          <div class="col-md-2 col-12">{{ user.firstName }}</div>
+          <div class="col-md-2 col-12">{{ user.lastName }}</div>
+          <div class="col-md-2 col-12">{{ user.email }}</div>
+          <div class="col-md-2 col-12">{{ user.phone }}</div>
+          <div class="col-md-2 col-12">{{ user.role }}</div>
+          <div
+            v-on:click="deleteUser(user._id)"
+            class="delete-user col-md-1 col-12"
+          >
+            <i class="fa fa-fw fa-trash"></i>
           </div>
-          <div class="col-md-2 col-12">Adedayo</div>
-          <div class="col-md-2 col-12">Adedunye</div>
-          <div class="col-md-2 col-12">test@admin.demo</div>
-          <div class="col-md-2 col-12">+234567898765</div>
-          <div class="col-md-2 col-12">Admin</div>
-          <div class="col-md-1 col-12"><i class="fa fa-fw fa-trash"></i></div>
         </div>
       </div>
     </div>
@@ -99,7 +97,38 @@
 <script>
 export default {
   name: "Container",
-  components: {}
+  components: {},
+  data() {
+    return {
+      users: []
+    };
+  },
+  beforeMount() {
+    fetch("https://crudcrud.com/api/c4a797a82d754192a88f2864235dbb25/users")
+      .then(res => res.json())
+      .then(response => {
+        this.users = response;
+        console.log(response);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
+  methods: {
+    deleteUser(id) {
+      fetch(
+        `https://crudcrud.com/api/c4a797a82d754192a88f2864235dbb25/users/${id}`,
+        { method: "DELETE" }
+      )
+        .then(res => res.json())
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  }
 };
 </script>
 
@@ -121,5 +150,9 @@ export default {
 .form-control.small {
   height: 2em;
   line-height: 1.5em;
+}
+.delete-user:hover {
+  cursor: pointer;
+  background-color: #f6f8f8;
 }
 </style>

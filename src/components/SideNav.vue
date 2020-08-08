@@ -30,6 +30,7 @@ export default {};
   }
   .router-link-active {
     color: #66db55;
+    border-left: solid 0.3em #66db55;
   }
   a:hover {
     background: #f8f9fa;

@@ -62,6 +62,42 @@
         </div>
       </div>
     </div>
+
+    <div class="row justify-content-between m-4">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Ó</th>
+            <th scope="col">FIRST NAME</th>
+            <th scope="col">LAST NAME</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">PHONE</th>
+            <th scope="col">ROLE</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-row mb-2 bg-white">
+            <th scope="row">1</th>
+            <td>Adedunye</td>
+            <td>Adedayo</td>
+            <td>admin@test.demo</td>
+            <td>+234567890-334</td>
+            <td>Admin</td>
+            <td>del</td>
+          </tr>
+          <tr class="table-row mb-2 bg-white">
+            <th scope="row">1</th>
+            <td>Adedunye</td>
+            <td>Adedayo</td>
+            <td>admin@test.demo</td>
+            <td>+234567890-334</td>
+            <td>Admin</td>
+            <td>del</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
